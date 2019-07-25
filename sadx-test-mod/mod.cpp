@@ -1,8 +1,8 @@
 #include "SADXModLoader.h"
 
-static char __cdecl SetPauseDisplayOptions(uint8_t* a1)
+static char __cdecl SetPauseDisplayOptions_(uint8_t* a1)
 {
-	if ((ControllerPointers[0]->HeldButtons & (Buttons_X | Buttons_L)) == (Buttons_X | Buttons_L))
+	if ((ControllerPointers[0]->HeldButtons & (Buttons_X | Buttons_Y)) == (Buttons_X | Buttons_Y))
 	{
 		*a1 = 0;
 		return 0;
@@ -50,7 +50,7 @@ extern "C"
 	__declspec(dllexport) ModInfo SADXModInfo = { ModLoaderVer };
 
 	PointerInfo jumps[] = {
-		{ (void*)SetPauseDisplayOptions, SetPauseDisplayOptions }
+		{ (void*)SetPauseDisplayOptions_, SetPauseDisplayOptions_ }
 	};
 
 	__declspec(dllexport) PointerList Jumps[] = { { arrayptrandlength(jumps) } };
