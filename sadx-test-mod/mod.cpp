@@ -2,7 +2,7 @@
 
 static char __cdecl SetPauseDisplayOptions_(uint8_t* a1)
 {
-	if ((ControllerPointers[0]->HeldButtons == (Buttons_Y & Buttons_L))
+	if ((ControllerPointers[0]->HeldButtons == (Buttons_Y & Buttons_L)))
 	{
 		*a1 = 0;
 		return 0;
