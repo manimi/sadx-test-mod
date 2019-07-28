@@ -1,57 +1,53 @@
+#include "stdafx.h"
 #include "SADXModLoader.h"
-
-static char __cdecl SetPauseDisplayOptions_(uint8_t* a1)
-{
-	if ((ControllerPointers[0]->HeldButtons & (Buttons_X | Buttons_Y)) == (Buttons_X | Buttons_Y))
-	{
-		*a1 = 0;
-		return 0;
-	}
-
-	uint8_t options = PauseOptions_Quit | PauseOptions_Controls | PauseOptions_Continue;
-	uint8_t count = 3;
-
-	// If not Chao Garden
-	if (IsCameraControlEnabled() && CurrentLevel < (signed int)LevelIDs_SSGarden)
-	{
-		options = PauseOptions_Camera | PauseOptions_Quit | PauseOptions_Controls | PauseOptions_Continue;
-		count = 4;
-	}
-
-	// If in Action Stage
-	if ((CurrentLevel < (signed int)LevelIDs_StationSquare || CurrentLevel >(signed int)LevelIDs_Past)
-		&& (CurrentLevel < (signed int)LevelIDs_SSGarden || CurrentLevel >(signed int)LevelIDs_MRGarden)
-		&& Lives > 0)
-	{
-		options |= PauseOptions_Restart;
-		++count;
-	}
-
-	// If the current stage has a map
-	if (LevelHasMap())
-	{
-		options |= PauseOptions_Map;
-		++count;
-	}
-
-	// Pretty straight forward
-	if (GameMode == GameModes_Mission)
-	{
-		options |= PauseOptions_Missions;
-		++count;
-	}
-
-	*a1 = options;
-	return count;
-}
+#include "Trampoline.h"
 
 extern "C"
 {
 	__declspec(dllexport) ModInfo SADXModInfo = { ModLoaderVer };
+	__declspec(dllexport) void __cdecl Init(const char* path, const HelperFunctions &helperFunctions)
+	{
+		//Your code for the Init function
+	}
 
-	PointerInfo jumps[] = {
-		{ (void*)SetPauseDisplayOptions_, SetPauseDisplayOptions_ }
-	};
+	//Buttons_X = "X"
+	//Buttons_Y = "Y"
+	//Buttons_B = "B"
+	//Buttons_A = "A"
+	//Buttons_Left = Left_Stick - <
+	//Buttons_Right = Left_Stick - >
+	//Buttons_Up = Left_Stick - ^
+    //Buttons_Down = Left_Stick - v
+	//Buttons_C = Left_Bumper
+	//Buttons_D = Right_Bumper
+	//Buttons_L = Left_Trigger
+	//Buttons_R = Right_Trigger
+	//Buttons_Z = "Z Button?"
 
-	__declspec(dllexport) PointerList Jumps[] = { { arrayptrandlength(jumps) } };
+	const char *ImportantText = { "this is a test message" };
+
+
+
+	__declspec(dllexport) void __cdecl OnFrame()
+	{
+		//Your code for the OnFrame function
+	}
+	__declspec(dllexport) void __cdecl OnInput()
+	{
+		if ((ControllerPointers[0]->HeldButtons & (Buttons_C)) == (Buttons_C))
+		{
+			int textpos = (1) << 16 | 0xA;
+
+			SetDebugFontSize((unsigned short)(8 * min(VerticalStretch, HorizontalStretch)));
+
+			SetDebugFontColor(0xFF00FF00);
+			DisplayDebugString(textpos++, (char *)ImportantText);
+			SetDebugFontColor(0xFFBFBFBF);
+			SetDebugFontSize(8);
+		}
+	}
+	__declspec(dllexport) void __cdecl OnExit()
+	{
+		//Your code for the OnExit function
+	}
 }
