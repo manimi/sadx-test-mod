@@ -2,7 +2,7 @@
 
 static char __cdecl SetPauseDisplayOptions_(uint8_t* a1)
 {
-	if ((ControllerPointers[0]->HeldButtons == (Buttons_Y & Buttons_L)))
+	if ((ControllerPointers[0]->HeldButtons & (Buttons_X | Buttons_Y)) == (Buttons_X | Buttons_Y))
 	{
 		*a1 = 0;
 		return 0;
@@ -53,5 +53,5 @@ extern "C"
 		{ (void*)SetPauseDisplayOptions_, SetPauseDisplayOptions_ }
 	};
 
-	__declspec(dllexport) PointerList Jumps[] = { arrayptrandlength(jumps) };
+	__declspec(dllexport) PointerList Jumps[] = { { arrayptrandlength(jumps) } };
 }

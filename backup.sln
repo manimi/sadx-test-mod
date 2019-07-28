@@ -3,16 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sadx-test-mod", "sadx-test-mod.vcxproj", "{3F122E9B-E722-461F-9DCE-4A82957736B0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sadx-test-mod", "sadx-test-mod\sadx-test-mod.vcxproj", "{3F122E9B-E722-461F-9DCE-4A82957736B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F122E9B-E722-461F-9DCE-4A82957736B0}.Debug|x64.ActiveCfg = Debug|Win32
 		{3F122E9B-E722-461F-9DCE-4A82957736B0}.Debug|x86.ActiveCfg = Debug|Win32
 		{3F122E9B-E722-461F-9DCE-4A82957736B0}.Debug|x86.Build.0 = Debug|Win32
+		{3F122E9B-E722-461F-9DCE-4A82957736B0}.Release|x64.ActiveCfg = Release|Win32
 		{3F122E9B-E722-461F-9DCE-4A82957736B0}.Release|x86.ActiveCfg = Release|Win32
 		{3F122E9B-E722-461F-9DCE-4A82957736B0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
@@ -20,6 +24,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {C5DF4164-CADA-4468-A344-D509728B97B8}
+		SolutionGuid = {FA408690-2035-466C-B717-88512BA4441B}
 	EndGlobalSection
 EndGlobal
